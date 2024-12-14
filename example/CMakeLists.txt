@@ -70,9 +70,11 @@ endif ()
 
 list(APPEND CMAKE_PREFIX_PATH ${CMAKE_SOURCE_DIR}/install/lib/cmake/)
 find_package(ElaWidgetTools REQUIRED)
-if (ELAWIDGETTOOLS_FOUND)
+if (ElaWidgetTools_FOUND)
+    set(ELAWIDGETTOOLS_INCLUDE_DIRS "D:/User/Documents/CodeWorkspace/Qt/ElaWidgetTools/src/include")
     message(STATUS "ELAWIDGETTOOLS_INCLUDE_DIR = ${ELAWIDGETTOOLS_INCLUDE_DIRS}")
     message(STATUS "ELAWIDGETTOOLS_LIBRARIES = ${ELAWIDGETTOOLS_LIBRARIES}")
+    set(ELAWIDGETTOOLS_LIBRARY_DIRS "D:/User/Documents/CodeWorkspace/Qt/ElaWidgetTools/build/x86_windows_msvc2019_pe_64bit/src/Debug")
     message(STATUS "ELAWIDGETTOOLS_LIB_DIR = ${ELAWIDGETTOOLS_LIBRARY_DIRS}")
 endif ()
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
@@ -83,7 +85,7 @@ target_include_directories(ElaWidgetToolsExample PUBLIC
 )
 target_link_libraries(ElaWidgetToolsExample PRIVATE
     Qt${QT_VERSION_MAJOR}::Widgets
-    ElaWidgetTools
+    ${ELAWIDGETTOOLS_LIBRARIES}
 )
 target_link_directories(ElaWidgetToolsExample PUBLIC
     ${ELAWIDGETTOOLS_LIBRARY_DIRS}
